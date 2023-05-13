@@ -24,32 +24,32 @@ Project Goals:
 Build an interactive dashboard and pulish it onlune to unlock insights about the financial performance and enable data-driven decision making across company departments.
 
 # II. Power Query practices
-## 1. Create `fact_estimate_sale`
+## 1. Create "fact_estimate_sale" table
 In order to create P&L statement, I need to calculate the following features:
 <img src="image/P&L_structure.png" align=left>
 
-Given the sale data only updated to 1st December 2021, It's required to join forcast data (Year-to-Go data) in  `fact_forecast_monthly` table and actual data (Year-to-Date data) in `fact_sales_monthly` to a new one called `fact_estimate_sale` table so that I'm able to conduct P&L statement and financial analysis from 2018 to the end of 2022.
+Given the sale data only updated to 1st December 2021, It's required to join forcast data (Year-to-Go data) in  `fact_forecast_monthly` table and actual data (Year-to-Date data) in "fact_sales_monthly" to a new one called "fact_estimate_sale" table so that I'm able to conduct P&L statement and financial analysis from 2018 to the end of 2022.
 
-The following steps were performed to create `fact_estimate_sale` table:
-- Calculate the last acutal sale date from `fact_sale_monthly` 
+The following steps were performed to create "fact_estimate_sale" table:
+- Calculate the last acutal sale date from "fact_sale_monthly"
 ```dax
 last_sale_date = List.Max(fact_sales_monthly[date])
 ```
 
-- Duplicate `fact_forcast_monthly` and rename it to `remain_gross_sale`
-- In `remain_gross_sale` filtered out Year-to-Go rows 
-
+- Duplicate "fact_forcast_monthly" and rename it to "remain_gross_sale"
+- In "remain_gross_sale" filtered out Year-to-Go rows 
 ```dax
 remain_gross_sale = Table.RenameColumns(#"Filtered Rows",{{"forecast_quantity", "Qty"}})
 ```
-- Duplicate `fact_sales_monthly` and rename to `fact_estimate_sale`
-- Concat `fact_estimate_sale` and `remain_gross_sale` by rows
+
+- Duplicate "fact_sales_monthly" and rename to "fact_estimate_sale"
+- Concat "fact_estimate_sale" and "remain_gross_sale" by rows
 
 ```dax
 fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 ```
 
-- Perform Merging `fact_estimate_sale` to other fact tables include `fact_gross_sale`, `pre_invoice_deductions` to extract `gross_price` and `pre_invoice_discount_pct` columns based on primary keys `fiscal_year`, `product_code`, and `customer_code`.
+- Perform Merging "fact_estimate_sale" table to other fact tables include "fact_gross_sale", "pre_invoice_deductions" to extract *gross_price* and *pre_invoice_discount_pct* columns based on primary keys *fiscal_year*, *product_code*, and *customer_code*.
 
 # III. Data Model
 
