@@ -57,6 +57,26 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 # III. Data Model
 <img src="image/data_model.PNG" align=left>
 
+The data model is formed in Star Schema with fact tables (including transactions) being put in center and dimension tables (include descriptive information) placed around.
+
+Fact tables in data model were:
+- fact_estimate_sale
+- fact_sale_monthly
+- fact_pre_invoice_deductions
+- fact_post_invoice_deductions
+- fact_gross_price
+- fact_fore_cast_monthly
+- fact_freight_cost
+- fact_manufactoring_cost
+- fact_operational_cost
+
+Dimension tables contains:
+- dim_customer
+- dim_product
+- dim_date
+
+
+
 # IV. DAX practices
 ## 1. Calculated Columns
 
