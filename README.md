@@ -27,6 +27,6 @@ Build an interactive dashboard and pulish it onlune to unlock insights about the
 
 # II. Data Model
 
-# III. DAX 
+# III. DAX practices
 
 # IV. Summary
