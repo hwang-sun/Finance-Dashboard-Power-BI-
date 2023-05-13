@@ -32,6 +32,8 @@ In order to create P&L statement, I need to calculate the following features:
 
 Given the sale data only updated to 1st December 2021, It's required to join forcast data (Year-to-Go data) in  `fact_forecast_monthly` table and actual data (Year-to-Date data) in "fact_sales_monthly" to a new one called "fact_estimate_sale" table so that I'm able to conduct P&L statement and financial analysis from 2018 to the end of 2022.
 
+Furthermore, multiple tables would need combining together so features for calculating P&L statement were available.
+
 The following steps were performed to create `fact_estimate_sale` table:
 - Calculate the last acutal sale date from *fact_sale_monthly"
 ```dax
