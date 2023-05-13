@@ -32,13 +32,13 @@ Given the sale data only updated to 1st December 2021, It's required to join for
 
 The following steps were performed to create `fact_estimate_sale` table:
 - Calculate the last acutal sale date from `fact_sale_monthly` 
-  ```last_sale_date = List.Max(fact_sales_monthly[date])```
+```last_sale_date = List.Max(fact_sales_monthly[date])```
 - Duplicate `fact_forcast_monthly` and rename it to `remain_gross_sale`
 - In `remain_gross_sale` filtered out Year-to-Go rows 
-  ```= Table.RenameColumns(#"Filtered Rows",{{"forecast_quantity", "Qty"}})```
+```remain_gross_sale = Table.RenameColumns(#"Filtered Rows",{{"forecast_quantity", "Qty"}})```
 - Duplicate `fact_sales_monthly` and rename to `fact_estimate_sale`
 - Concat `fact_estimate_sale` and `remain_gross_sale` by rows
-  ```fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})```
+```fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})```
 - Perform Merging `fact_estimate_sale` to other fact tables include `fact_gross_sale`, `pre_invoice_deductions` to extract `gross_price` and `pre_invoice_discount_pct` columns based on primary keys `fiscal_year`, `product_code`, and `customer_code`.
 
 # III. Data Model
