@@ -55,7 +55,7 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 
 ## 2. Create "P&L_structure" table for structuring P&L statement visual
 
-<img src="image/P&L_structure.PNG" align=left>
+<img src="image/P&L_structure.PNG" width=300 height = 400 align=center>
 
 
 # III. Data Model
