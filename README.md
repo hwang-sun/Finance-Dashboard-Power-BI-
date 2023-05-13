@@ -33,6 +33,7 @@ Given the sale data only updated to 1st December 2021, It's required to join for
 The following steps were performed to create `fact_estimate_sale` table:
 - Calculate the last acutal sale date from `fact_sale_monthly` 
 ```last_sale_date = List.Max(fact_sales_monthly[date])```
+
 - Duplicate `fact_forcast_monthly` and rename it to `remain_gross_sale`
 - In `remain_gross_sale` filtered out Year-to-Go rows 
 ```remain_gross_sale = Table.RenameColumns(#"Filtered Rows",{{"forecast_quantity", "Qty"}})```
