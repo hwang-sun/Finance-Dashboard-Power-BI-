@@ -55,7 +55,7 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 
 ## 2. Create "P&L_structure" table for structuring P&L statement visual
 
-<img src="image/P&L_structure.PNG" width=300 height = 400 align=center>
+<img src="image/P&L_structure.PNG" width=500 height = 400 align=center>
 
 
 # III. Data Model
@@ -63,6 +63,7 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 <img src="image/data_model.PNG" align=left>
 
 
+---
 The data model is formed in Star Schema with fact tables (including transactions) being put in center and dimension tables (include descriptive information) placed around.
 
 Fact tables in data model were:
