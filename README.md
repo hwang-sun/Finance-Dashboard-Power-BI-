@@ -1,5 +1,5 @@
 # AtliQ Finance Power BI Report
-For interactive published dashboard: https://app.powerbi.com/groups/me/reports/59fb4f17-b17e-40c1-8299-0c3b6967b93b?ctid=57e084ec-fce8-449b-83e0-ba39d06fdec3&pbi_source=linkShare
+For desktop file: https://drive.google.com/file/d/1bv0fC4aR0X6sGNlZqOEi179pn0lFi_AU/view?usp=share_link
 
 <img src="finance_dashboard.PNG" align=left>
 ---
