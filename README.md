@@ -43,11 +43,10 @@ last_sale_date = List.Max(fact_sales_monthly[date])
 - Duplicate "fact_forcast_monthly" and rename it to "remain_gross_sale"
 - In "remain_gross_sale" filtered out Year-to-Go rows which have *date* greater than *last_sale_date*
 ```dax
-remain_gross_sale = = Table.SelectRows(Source, each ([date] > last_sale_date)))
+remain_gross_sale = Table.SelectRows(Source, each ([date] > last_sale_date)))
 ```
 
-- Duplicate "fact_sales_monthly" and rename to "fact_estimate_sale"
-- Concat "fact_estimate_sale" and "remain_gross_sale" by rows
+- Concat "fact_estimate_sale" and "remain_gross_sale" by rows would result in `fact_estimate_sale` table
 
 ```dax
 fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
