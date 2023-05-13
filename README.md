@@ -37,9 +37,9 @@ last_sale_date = List.Max(fact_sales_monthly[date])
 ```
 
 - Duplicate "fact_forcast_monthly" and rename it to "remain_gross_sale"
-- In "remain_gross_sale" filtered out Year-to-Go rows 
+- In "remain_gross_sale" filtered out Year-to-Go rows which have *date* greater than *last_sale_date*
 ```dax
-remain_gross_sale = Table.RenameColumns(#"Filtered Rows",{{"forecast_quantity", "Qty"}})
+remain_gross_sale = = Table.SelectRows(Source, each ([date] > last_sale_date)))
 ```
 
 - Duplicate "fact_sales_monthly" and rename to "fact_estimate_sale"
