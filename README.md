@@ -36,7 +36,9 @@ The following steps were performed to create `fact_estimate_sale` table:
 
 - Duplicate `fact_forcast_monthly` and rename it to `remain_gross_sale`
 - In `remain_gross_sale` filtered out Year-to-Go rows 
-```remain_gross_sale = Table.RenameColumns(#"Filtered Rows",{{"forecast_quantity", "Qty"}})```
+```python
+remain_gross_sale = Table.RenameColumns(#"Filtered Rows",{{"forecast_quantity", "Qty"}})
+```
 - Duplicate `fact_sales_monthly` and rename to `fact_estimate_sale`
 - Concat `fact_estimate_sale` and `remain_gross_sale` by rows
 ```fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})```
