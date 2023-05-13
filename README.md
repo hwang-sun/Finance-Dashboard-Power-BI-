@@ -29,6 +29,7 @@ In order to create P&L statement, I need to calculate the following features:
 
 <img src="image/P&L_formula.png" align=left>
 
+
 Given the sale data only updated to 1st December 2021, It's required to join forcast data (Year-to-Go data) in  `fact_forecast_monthly` table and actual data (Year-to-Date data) in "fact_sales_monthly" to a new one called "fact_estimate_sale" table so that I'm able to conduct P&L statement and financial analysis from 2018 to the end of 2022.
 
 The following steps were performed to create `fact_estimate_sale` table:
@@ -56,9 +57,11 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 
 <img src="image/P&L_structure.PNG" align=left>
 
+
 # III. Data Model
 
 <img src="image/data_model.PNG" align=left>
+
 
 The data model is formed in Star Schema with fact tables (including transactions) being put in center and dimension tables (include descriptive information) placed around.
 
