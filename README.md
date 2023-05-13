@@ -55,6 +55,7 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 <img src="image/P&L_structure.PNG" align=left>
 
 # III. Data Model
+<img src="image/data_model.PNG" align=left>
 
 # IV. DAX practices
 
