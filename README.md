@@ -64,7 +64,7 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 
 
 ---
-The data model is formed in Star Schema with fact tables (including transactions) being put in center and dimension tables (include descriptive information) placed around.
+The data model is formed in Star Schema with fact tables (include transactions) being put in center and dimension tables (include descriptive information) placed around.
 
 Fact tables in data model were:
 - fact_estimate_sale
