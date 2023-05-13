@@ -4,7 +4,7 @@
 
 
 The report includes 6 elements:
-- Key metrics : Net Sale ($), Gross Margin (%), Net Frofit (%)
+- Key metrics include Net Sale ($), Gross Margin (%), Net Frofit (%)
 - P&L Statement
 - A Line chart compares P&L values between selected year and its previous year
 - A bar chart compares P&L values across different customers
