@@ -107,4 +107,3 @@ The data model is formed in Star Schema with fact tables (include transactions) 
 
 
 ## 2. Calculated Measures
-# V. Summary
