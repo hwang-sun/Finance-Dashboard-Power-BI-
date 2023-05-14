@@ -16,9 +16,9 @@ The report includes 6 elements:
 # I. Problem Context
 AtliQ was established in 2017 as an IT services company to help businesses integrate their processes with automated tools. Over the past 5 years, AtliQ has successfully provided many businesses with custom solutions that help them scale, or streamline their processes, reduce overhead costs and increase overall efficiency.
 
-The CEO of the company wants to have an dynamic report showing Profit and Loss statement to understand financial performance across markets, products, and customers.
+The CEO of the company wants to have an dynamic report showing Profit and Loss statement to understand financial performance over time and across markets, products, and customers.
 
-Users are able to use the tool in their busines review meetings and in their decision making process such as customer negotiation, new product launch, marketing promotions, fnance budgeting etc.
+Users will be able to use the dynamic report in their busines review meetings and in their decision making process such as customer negotiation, new product launch, marketing promotions, fnance budgeting etc.
 
 Project Goals:
 Build an interactive dashboard and pulish it onlune to unlock insights about the financial performance and enable data-driven decision making across company departments.
