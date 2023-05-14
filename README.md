@@ -1,4 +1,4 @@
-# AtliQ Power BI P&L Statement Report
+# AtliQ P&L Statement - Power BI Report
 For desktop file: https://drive.google.com/file/d/1bv0fC4aR0X6sGNlZqOEi179pn0lFi_AU/view?usp=share_link
 
 <img src="image/finance_dashboard.PNG" align=center>
