@@ -105,5 +105,62 @@ The data model is formed in Star Schema with fact tables (include transactions) 
 # IV. DAX practices
 ## 1. Calculated Columns
 
+Based on the initial `fact_estimate_sale` table, I perform calculated other elements of P&L statement including:
 
+- *post_invoice_discount*
+```dax
+post_invoice_discount = 
+var disc_pct = CALCULATE(max('fact_post_invoice_deductions'[discounts_pct]), RELATEDTABLE('fact_post_invoice_deductions'))
+return disc_pct*fact_estimate_sale[net_invoice_sale]
+```
+- *post_invoice_other_deduction*
+```dax
+post_invoice_other_deduction = 
+var disc_pct = CALCULATE(max('fact_post_invoice_deductions'[other_deductions_pct]), RELATEDTABLE('fact_post_invoice_deductions'))
+return disc_pct*fact_estimate_sale[net_invoice_sale]
+```
+- *net_sale*
+```dax
+net_sale = fact_estimate_sale[net_invoice_sale] - fact_estimate_sale[post_invoice_other_deduction] - fact_estimate_sale[post_invoice_discount]
+```
+- *manufactoring_cost*
+```dax
+manufacturing_cost = 
+var cst = CALCULATE(max('fact_manufacturing_cost'[manufacturing_cost]), RELATEDTABLE('fact_manufacturing_cost'))
+return cst*fact_estimate_sale[Qty]
+```
+- *freight_cost*
+```dax
+freight_cost = 
+var disc_pct = CALCULATE(max('fact_freight_cost'[freight_pct]), RELATEDTABLE('fact_freight_cost'))
+return disc_pct*fact_estimate_sale[net_sale]
+```
+- *other_cost*
+```dax
+other_cost = 
+var pct = MAXX(CALCULATETABLE(fact_freight_cost), fact_freight_cost[other_cost_pct])
+return pct*fact_estimate_sale[net_sale]
+```
+- *gross_margin*
+```dax
+gross_margin = fact_estimate_sale[net_sale] - fact_estimate_sale[manufacturing_cost] - fact_estimate_sale[freight_cost] - fact_estimate_sale[other_cost]
+```
+- *ad_promotion_exp*
+```dax
+ad_promotion_exp = 
+var pct = CALCULATE(MAX(fact_operational_cost[ads_promotions_pct]), CALCULATETABLE(fact_operational_cost))
+return
+    pct * fact_estimate_sale[net_sale]
+```
+- *other_operational_exp*
+```dax
+other_operational_exp = 
+var pct = MAXX(fact_operational_cost, fact_operational_cost[other_operational_expense_pct])
+return
+    pct * fact_estimate_sale[net_sale]
+```
+- *net_profit*
+```dax
+net_profit = fact_estimate_sale[gross_margin] - fact_estimate_sale[ad_promotion_exp] - fact_estimate_sale[other_operational_exp]
+```
 ## 2. Calculated Measures
