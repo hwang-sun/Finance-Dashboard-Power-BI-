@@ -53,6 +53,12 @@ fact_estimate_sale = Table.Combine({fact_sales_monthly, remain_gross_sale})
 ```
 
 - Perform Merging "fact_estimate_sale" table to other fact tables include "fact_gross_sale", "pre_invoice_deductions" to extract *gross_price* and *pre_invoice_discount_pct* columns based on primary keys *fiscal_year*, *product_code*, and *customer_code*.
+- *net_invoice_sale* column was then calculated for future analysis.
+
+The created `fact_estimate_sale`
+
+<img src="image/initial_estimate_table.PNG" align=center>
+
 
 ## 2. Create "P&L_structure" table for structuring P&L statement visual
 
