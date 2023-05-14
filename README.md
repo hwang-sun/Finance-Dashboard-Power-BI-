@@ -73,19 +73,25 @@ The data model is formed in Star Schema with fact tables (include transactions) 
 - fact_pre_invoice_deductions
 - fact_post_invoice_deductions
 - fact_gross_price
-- fact_fore_cast_monthly
+- fact_forecast_monthly
 - fact_freight_cost
 - fact_manufactoring_cost
 - fact_operational_cost
 
-## 2. Dimension tables contains:
+## 2. Dimension tables in data model
 - dim_customer
 - dim_product
 - dim_date
 
 ## 3. Resolve many-to-many relationship
 
+- "linked_market" was created as a bridge table for resolving many-to-many relationship between "dim_customer" and "fact_freight_cost" table as both tables contained primary key column *market* with multiple values.
 
+<img src="image/bridge_market.PNG" align=center>
+
+- Similarly, "linked_fiscal_year" was created as bridge table for resolving many-to-many relationship between dimension table "dim_date" and "fact_pre_invoice_deductions", "fact_gross_price", "fact_forecast_monthly", "fact_freight_cost", "fact_manufactoring_cost", "fact_operational_cost" tables as foreign key column *fiscal_year* of those fact tables and primary key of the dimension table had multiple values.
+
+<img src="image/bridge_fiscal_year.PNG" align=center>
 
 
 # IV. DAX practices
