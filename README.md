@@ -163,4 +163,9 @@ return
 ```dax
 net_profit = fact_estimate_sale[gross_margin] - fact_estimate_sale[ad_promotion_exp] - fact_estimate_sale[other_operational_exp]
 ```
+
+`fact_estimate_sale` with calculated columns:
+
+<img src="image/final_estimate_table.PNG" align=center>
+
 ## 2. Calculated Measures
