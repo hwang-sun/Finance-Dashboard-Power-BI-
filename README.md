@@ -169,3 +169,30 @@ net_profit = fact_estimate_sale[gross_margin] - fact_estimate_sale[ad_promotion_
 <img src="image/final_estimate_table.PNG" align=center>
 
 ## 2. Calculated Measures
+```dax
+P&L value = 
+
+var res = SWITCH(TRUE(),
+max('P&L structure'[Order]) = 1, [gross_sale_measure]/1000000,
+max('P&L structure'[Order]) = 2, [pre_inv_deduction]/1000000,
+max('P&L structure'[Order]) = 3, ([gross_sale_measure] - [pre_inv_deduction])/1000000,
+max('P&L structure'[Order]) = 4, [post_inv_disc]/1000000,
+max('P&L structure'[Order]) = 5, [post_inv_deduction]/1000000,
+max('P&L structure'[Order]) = 6, ([post_inv_deduction] + [post_inv_disc])/1000000,
+max('P&L structure'[Order]) = 7, [net_sale_measure]/1000000,
+max('P&L structure'[Order]) = 8, [manufacturing_cost_measure]/1000000,
+max('P&L structure'[Order]) = 9, [freight_cost_measures]/1000000,
+max('P&L structure'[Order]) = 10, [other_cost_measures]/1000000,
+max('P&L structure'[Order]) = 11, [total_COGS]/1000000,
+max('P&L structure'[Order]) = 12, [gross_margin_measure]/1000000,
+max('P&L structure'[Order]) = 13, [gross_margin_%]*100,
+max('P&L structure'[Order]) = 14, [GM/unit], 
+max('P&L structure'[Order]) = 15, [ad_operational_exp]/1000000,
+max('P&L structure'[Order]) = 16, [net_profit_measures]/1000000,
+max('P&L structure'[Order]) = 17, [net_profit_%]*100,
+0)
+
+
+return 
+IF(HASONEVALUE('P&L structure'[P&L Statement]), res, [net_sale_measure]/1000000)
+```
