@@ -169,6 +169,9 @@ net_profit = fact_estimate_sale[gross_margin] - fact_estimate_sale[ad_promotion_
 <img src="image/final_estimate_table.PNG" align=center>
 
 ## 2. Calculated Measures
+
+Condition measure `P&L value` was performed to attatch each metric to its corresponding P&L label based on "P&L structure" table. If there's no filter context being applied, the P&L value by default would convey the net sale value.
+
 ```dax
 P&L value = 
 
@@ -192,7 +195,17 @@ max('P&L structure'[Order]) = 16, [net_profit_measures]/1000000,
 max('P&L structure'[Order]) = 17, [net_profit_%]*100,
 0)
 
-
 return 
 IF(HASONEVALUE('P&L structure'[P&L Statement]), res, [net_sale_measure]/1000000)
+```
+`LY_value` was then calculated in order to compare the selected year to its previous year
+
+```dax
+LY_value = CALCULATE([P&L value], SAMEPERIODLASTYEAR(dim_date[date]))
+```
+Two other measures `delta_value` and `change_pct` were respectively computed for further observation to the financial performance over time
+
+```dax
+delta_value = [P&L value] - [LY_value]
+change_pct = DIVIDE([delta_value]*100, [LY_value], 0)
 ```
