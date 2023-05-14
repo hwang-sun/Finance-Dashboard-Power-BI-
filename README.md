@@ -40,7 +40,7 @@ The following steps were performed to create `fact_estimate_sale` table:
 last_sale_date = List.Max(fact_sales_monthly[date])
 ```
 
-- Duplicate "fact_forcast_monthly" and rename it to "remain_gross_sale"
+- Create "remain_gross_sale" as referencing table of "fact_forcast_monthly"
 - In "remain_gross_sale" filtered out Year-to-Go rows which have *date* greater than *last_sale_date*
 ```dax
 remain_gross_sale = Table.SelectRows(Source, each ([date] > last_sale_date)))
