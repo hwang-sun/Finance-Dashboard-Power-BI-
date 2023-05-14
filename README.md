@@ -207,5 +207,7 @@ Two other measures `delta_value` and `change_pct` were respectively computed for
 
 ```dax
 delta_value = [P&L value] - [LY_value]
+```
+```dax
 change_pct = DIVIDE([delta_value]*100, [LY_value], 0)
 ```
